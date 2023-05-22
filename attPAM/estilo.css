@@ -1,0 +1,86 @@
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            border-radius: 20px;
+            border: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #bd6390;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+        h2{
+            color: white;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        input[type="text"],
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        #jogadoresContainer input[type="text"] {
+            margin-bottom: 5px;
+        }
+
+        button {
+            background-color: #a15072;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #743c53;
+        }
+
+        #equipesList {
+            margin-top: 20px;
+            padding: 0;
+            color: white; 
+        }
+
+        #equipesList li {
+            margin-bottom: 10px;
+            list-style-type: none;
+            font-size: 20px;  
+        }
+
+        #equipesList strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #equipesList ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+
+        @media screen and (max-width: 600px) {
+            form {
+                padding: 0 20px;
+            }
+
+            h1, form, #equipesList {
+                max-width: 100%;
+            }
+        }

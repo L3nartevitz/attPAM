@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cadastro de Equipe</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+</head>
+
+<body>
+    <h1>Cadastro de Equipe</h1>
+    <form id="equipeForm">
+        <label for="nomeEquipe">Nome da Equipe:</label>
+        <input type="text" id="nomeEquipe" required>
+
+        <h2>Jogadores:</h2>
+        <div id="jogadoresContainer">
+            <input type="text" name="jogador" placeholder="Nome do Jogador" required>
+        </div>
+        <br>
+        <button type="button" onclick="adicionarJogador()">Adicionar Jogador</button>
+        <button type="submit">Salvar Equipe</button>
+    </form>
+
+    <h1>Equipes Cadastradas</h1>
+    <ul id="equipesList"></ul>
+
+       <script>
+        function adicionarJogador() {
+            var jogadorContainer = document.getElementById("jogadoresContainer");
+
+            var jogadorInput = document.createElement("input");
+            jogadorInput.type = "text";
+            jogadorInput.name = "jogador";
+            jogadorInput.placeholder = "Nome do Jogador";
+            jogadorInput.required = true;
+
+            jogadorContainer.appendChild(jogadorInput);
+        }
+
+        function salvarEquipe(event) {
+            event.preventDefault();
+
+            var equipeForm = document.getElementById("equipeForm");
+            var nomeEquipe = document.getElementById("nomeEquipe").value;
+            var jogadores = document.getElementsByName("jogador");
+
+            var equipe = {
+                nome: nomeEquipe,
+                jogadores: []
+            };
+
+            for (var i = 0; i < jogadores.length; i++) {
+                var jogador = jogadores[i].value;
+                equipe.jogadores.push(jogador);
+            }
+
+            var equipesList = document.getElementById("equipesList");
+            var equipeItem = document.createElement("li");
+            equipeItem.innerHTML = "<strong>" + equipe.nome + "</strong>";
+
+            var jogadoresList = document.createElement("ul");
+            for (var j = 0; j < equipe.jogadores.length; j++) {
+                var jogador = equipe.jogadores[j];
+
+                var jogadorItem = document.createElement("li");
+                jogadorItem.textContent = jogador;
+
+                jogadoresList.appendChild(jogadorItem);
+            }
+
+            equipeItem.appendChild(jogadoresList);
+            equipesList.appendChild(equipeItem);
+
+            equipeForm.reset();
+        }
+
+        var equipeForm = document.getElementById("equipeForm");
+        equipeForm.addEventListener("submit", salvarEquipe);
+    </script>
+</body>
+</html>
